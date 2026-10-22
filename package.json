@@ -1,6 +1,6 @@
 {
   "name": "bruno",
-  "displayName": "Bruno",
+  "displayName": "Bruno (s-stanv fork)",
   "description": "API client for exploring and testing APIs in VS Code",
   "version": "6.0.0",
   "publisher": "bruno-api-client",

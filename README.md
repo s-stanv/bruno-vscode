@@ -1,5 +1,13 @@
 # Bruno for VS Code
 
+> **Fork of [usebruno/bruno-vscode](https://github.com/usebruno/bruno-vscode).** Built from upstream `main`, which already has the
+> **Client Certificates** tab in collection settings (missing in the 6.0.0 Marketplace build). Fork changes:
+>
+> - gRPC response pane gets a **Decoded / Raw** toggle. In *Decoded* mode `bytes` fields that hold base64 JSON are shown as JSON,
+>   and binary `bytes` (PDF, PNG, JPEG, ZIP) get a **Save** button; the file name is taken from a sibling `filename` field.
+> - Install: download the `.vsix` from [Releases](https://github.com/s-stanv/bruno-vscode/releases) and run
+>   `code --install-extension bruno-*.vsix`. VS Code does not auto-update extensions installed from a VSIX.
+
 With Bruno VS Code extension, you can develop and test your APIs in Bruno right from Visual Studio Code. You can use the VS Code extension to open bruno files, send API requests, manage collections and environments, and much more. Streamline your development workflow by testing your APIs in the same application you use to develop them.
 
 ![Bruno Editor](https://raw.githubusercontent.com/usebruno/bruno-vscode/274867e16fff4b1e2c42f7e6616037c5ff4ff0a7/media/vscode-demo.png)
