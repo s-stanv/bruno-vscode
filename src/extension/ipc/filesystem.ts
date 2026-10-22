@@ -1,10 +1,12 @@
 
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { registerHandler } from './handlers';
 import {
   browseDirectory,
   browseFiles,
+  chooseFileToSave,
   normalizeAndResolvePath,
   isFile,
   isDirectory,
@@ -59,6 +61,17 @@ const registerFilesystemIpc = (): void => {
   registerHandler('renderer:is-directory', async (args) => {
     const [pathname] = args as [string];
     return isDirectory(pathname);
+  });
+
+  registerHandler('renderer:save-base64-to-file', async (args) => {
+    const [base64, fileName] = args as [string, string?];
+    const defaultName = path.basename(fileName || 'response');
+    const filePath = await chooseFileToSave(path.join(os.homedir(), defaultName));
+    if (!filePath) {
+      return null;
+    }
+    await fs.promises.writeFile(filePath, Buffer.from(base64, 'base64'));
+    return filePath;
   });
 
   registerHandler('renderer:export-environment', async (args) => {

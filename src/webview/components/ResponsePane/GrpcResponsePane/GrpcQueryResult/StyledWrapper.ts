@@ -8,19 +8,71 @@ const StyledWrapper = styled.div`
     color: ${(props) => props.theme.colors.text.muted};
   }
 
+  .view-toggle {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 6px;
+
+    button {
+      padding: 2px 8px;
+      font-size: ${(props) => props.theme.font.size.sm};
+      color: ${(props) => props.theme.colors.text.muted};
+      border-radius: ${(props) => props.theme.border.radius.sm};
+
+      &.active {
+        color: ${(props) => props.theme.text};
+        background-color: color-mix(in srgb, ${(props) => props.theme.colors.text.muted} 15%, transparent);
+      }
+    }
+  }
+
+  .binary-files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .binary-file {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    font-size: ${(props) => props.theme.font.size.sm};
+    color: ${(props) => props.theme.text};
+    border: 1px solid ${(props) => props.theme.border.border1};
+    border-radius: ${(props) => props.theme.border.radius.sm};
+
+    &:hover {
+      background-color: color-mix(in srgb, ${(props) => props.theme.colors.text.muted} 15%, transparent);
+    }
+
+    .binary-size {
+      color: ${(props) => props.theme.colors.text.muted};
+    }
+  }
+
   .responses-container {
-    height: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
 
     div.CodeMirror {
       height: 100%;
     }
 
-    &.single {
-      height: 100%;
-    }
-
     &.multi {
       overflow-y: auto;
+    }
+  }
+
+  .single-response {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .editor {
+      flex: 1 1 auto;
+      min-height: 0;
     }
   }
 
